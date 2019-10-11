@@ -13,6 +13,11 @@ export default {
   methods: {
     handleClick(){
       eventBus.$emit('film-selected', this.film)
+    },
+    mounted(){
+      eventBus.$on('film-selected', (film) => {
+        this.film = film
+      })
     }
   }
 }
