@@ -1,5 +1,5 @@
 <template lang="html">
-
+  
   <form v-on:submit.prevent>
     <input type="text" v-model="search" placeholder="Search for film..." v-on:keyup="searchForFilm">
     <select v-on:change="handleSelect" v-model="selectedFilm">

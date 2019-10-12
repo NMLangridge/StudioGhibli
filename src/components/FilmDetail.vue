@@ -26,7 +26,7 @@ export default {
     handleClick(){
       eventBus.$emit('favourite-films', this.film);
     },
-    removeFavourite: function() {
+    removeFavourite(){
       eventBus.$emit("favourite-removed", this.film);
     }
   }

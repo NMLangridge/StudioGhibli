@@ -22,19 +22,11 @@ export default {
     return {
       films: [],
       selectedFilm: null,
-      favouriteFilms: []
+      favouriteFilms: [],
+      favouriteRemoved: []
     };
   },
-  // methods: {
-  //   markFavourite: function(beer) {
-  //     const index = this.beers.indexOf(beer);
-  //     this.beers[index].isFavourite = true;
-  //   },
-  //   unmarkFavourite: function(film) {
-  //     const index = this.films.indexOf(film);
-  //     this.films[index].isFavourite = false;
-  //   },
-  // },
+
   mounted(){
     fetch('https://ghibliapi.herokuapp.com/films/')
     .then(result => result.json())
@@ -48,8 +40,8 @@ export default {
       this.favouriteFilms.push(film);
     })
 
-    eventBus.$on('favourite-removed', film => {
-      this.unmarkFavourite(film);
+    eventBus.$on('favourite-removed', (film) => {
+      this.favouriteFilms.pop(film);
     })
 
   },
@@ -64,29 +56,3 @@ export default {
 
 <style lang="css" scoped>
 </style>
-
-
-
-
-
-
-
-markFavourite: function(beer) {
-  const index = this.beers.indexOf(beer);
-  this.beers[index].isFavourite = true;
-},
-unmarkFavourite: function(beer) {
-  const index = this.beers.indexOf(beer);
-  this.beers[index].isFavourite = false;
-}
-},
-mounted() {
-  this.getBeers();
-
-  eventBus.$on("beer-selected", beer => (this.selectedBeer = beer));
-
-  eventBus.$on("favourite-added", beer => this.markFavourite(beer));
-
-  eventBus.$on("favourite-removed", beer => this.unmarkFavourite(beer));
-}
-};
