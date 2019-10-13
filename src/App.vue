@@ -1,12 +1,14 @@
 <template lang="html">
-  <div>
+  <div id="app">
     <h1>Studio Ghibli</h1>
     <h2>Films</h2>
+    <div id="list-info"
     <films-list :films='films'></films-list>
     <film-detail :film='selectedFilm'></film-detail>
     <favourite-films :films='favouriteFilms'></favourite-films>
     <film-filter :films="films"></film-filter>
   </div>
+</div>
 </template>
 
 <script>
@@ -55,4 +57,14 @@ export default {
 </script>
 
 <style lang="css" scoped>
+/* #app {
+  background-color: lightblue;
+}
+
+#list-info {
+  display: flex;
+} */
 </style>
+
+<!-- result = this.favouriteFilms.indexOf(film)
+this.favouriteFilms.splice(result, 1) -->
